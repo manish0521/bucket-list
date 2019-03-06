@@ -2,6 +2,7 @@
 
 
 let isStack = true;
+const list = [];
 
 // Set init to run when the window loads.
 window.onload = init;
@@ -33,16 +34,28 @@ function addNewItem(event) {
     displayItem(newItem);
 
     // Now comes your part: add the item to the list.
+    let emptyStr = '';
+    
 
 
     // Display it in next-item if it's the first item:
-    if(false) { // definitely change that condition!
-        document.querySelector('#next-item').innerText = ''; // Replace that empty string with the actual item!
-    } 
+    if( list !== emptyStr) {
+    // 
+        list.push(newItem);
+        console.log(list);
+        console.log(list.length);
 
-    document.querySelector('#newest-item').innerText = '' // Replace that empty string with the actual item!
+    } else {
+        
+    }
+    
+    
+    
+    document.querySelector('#next-item').innerText = 'next item ' + list[0]; // Replace that empty string with the actual item!
 
-    document.querySelector('#number-of-items').innerText = 0 // Replace that with the number of items!
+    document.querySelector('#newest-item').innerText = 'Newest Item ' + newItem  ; // Replace that empty string with the actual item!
+
+    document.querySelector('#number-of-items').innerText = 'Number of Item ' + list.length; // Replace that with the number of items!
 }
 
 function removeItem(event) {
