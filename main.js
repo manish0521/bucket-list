@@ -31,48 +31,55 @@ function addNewItem(event) {
     resetInput();
 
     // Add the item to the <ul>.
-    displayItem(newItem);
+   
 
     // Now comes your part: add the item to the list.
-    let emptyStr = '';
-    
+
+
 
 
     // Display it in next-item if it's the first item:
-    if( list !== emptyStr) {
-    // 
+    if(newItem !== '') {
+        displayItem(newItem);
         list.push(newItem);
         console.log(list);
         console.log(list.length);
-
-    } else {
         
+
     }
-    
-    
-    
-    document.querySelector('#next-item').innerText = 'next item ' + list[0]; // Replace that empty string with the actual item!
+        document.querySelector('#old-item').innerText = 'My oldest Item:' + list[0]; // Replace that empty string with the actual item!
 
-    document.querySelector('#newest-item').innerText = 'Newest Item ' + newItem  ; // Replace that empty string with the actual item!
+        document.querySelector('#newest-item').innerText = 'My newest Item: ' + newItem  ; // Replace that empty string with the actual item!
 
-    document.querySelector('#number-of-items').innerText = 'Number of Item ' + list.length; // Replace that with the number of items!
+        document.querySelector('#number-of-items').innerText = 'Total Number of Item ' + list.length; // Replace that with the number of items!
 }
 
 function removeItem(event) {
     // Prevent page reload.
     event.preventDefault()
 
+    const newItem = document.querySelector('#new-item').value;
+    
     if(isStack) {
         removeLastFromPage();
         // Your code to remove it from the array  goes here!
-
+        list.pop(newItem);
+        console.log(list);
+        console.log(list.length - 2);
+        
 
     } else {
         removeFirstFromPage();
         // Your code to remove it from the array goes here!
+        
 
-
+        
     }
+    document.querySelector('#newest-item').innerText = 'My newest Item: ' + list.length  ; // Replace that empty string with the actual item!
+
+    document.querySelector('#number-of-items').innerText = 'Total Number of Item ' + newItem ; // Replace that with the number of items!
+    document.querySelector('#old-item').innerText = 'My oldest Item:' + list[0]; // Replace that empty string with the actual item!
+    
 }
 
 function toggleQueueAndStack(event) {
